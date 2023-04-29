@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
 
 :root {
     background-image: url(../images/bg.gif);
@@ -12,8 +12,9 @@
 }
 
 @font-face {
-    font-family: 'PixelCode';
-    src: url(../fonts/PixelCode.woff2) format('woff2');
+    font-family: 'Hanken Grotesk', sans-serif;
+    src: url(../fonts/HankenGrotesk-Regular.ttf) format('ttf');
+    
 }
 
 body {
@@ -23,7 +24,7 @@ body {
 
 .container {
     color: white;
-    font-family: 'PixelCode'!important;
+    font-family: 'HankenGrotesk-Regular'!important;
     text-align: center;
     padding: 15%;
 }
