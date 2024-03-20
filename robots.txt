@@ -6,7 +6,7 @@ Allow: /
 
 User-agent: Googlebot
 Disallow: /index.js
-Disallow: /index.css
+Disallow: /style.css
 Disallow: /index.html
 Disallow: /assets/
 
