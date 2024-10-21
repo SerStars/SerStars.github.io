@@ -3,58 +3,213 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./style.css">
     <title>SerStars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/beercss@3.7.10/dist/cdn/beer.min.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="https://serstars.is-a.dev/image.png">
 
-    <meta name="theme-color" content="#111111">
+    <meta name="theme-color" content="#2b2d31">
     <meta name="og:image" content="https://serstars.is-a.dev/image.png">
     <meta name="twitter:image" content="https://serstars.is-a.dev/image.png">
-    <meta property="og:description" content="Hey, it's me. I'm the problem it's me..">
+    <meta property="og:description" content="Some guy with a passion gaming and coding.">
 </head>
 
-<body>
+<body class="dark">
 
-    <div class="container">
-        <div class="glass-container">
-            <div class="content">
-                <div class="logo">
-                    <h3>Hey,<br>I'm SerStars<br><span id="tijd">Loading Time...</span></h3>
-                    <h6>
-                        Just a random guy who enjoys gaming and coding<br>
-                    </h6>
-                    <p>Projects:</p>
-                    <button onclick="window.open('https://github.com/serstars/rosiecord', '_blank')"
-                        style="text-decoration: none; cursor: pointer;">Rosiecord</button>
-                    <button onclick="window.open('https://discord.gg/brawl-assets-712207286050750474', '_blank')"
-                        style="text-decoration: none; cursor: pointer;">Brawl Assets</button>
-                    <button onclick="window.open('https://github.com/Wumpus-Central', '_blank')"
-                        style="text-decoration: none; cursor: pointer;">Wumpus Central</button>
-                    <button onclick="window.open('https://enmity-addons.github.io', '_blank')"
-                        style="text-decoration: none; cursor: pointer;">Enmity Addons Website</button>
+    <nav class="bottom">
+        <a href="https://github.com/serstars">
+            <i>code</i>
+            <div>GitHub</div>
+        </a>
+        <a href="https://discord.com/users/861631850681729045">
+            <i>chat</i>
+            <div>Discord</div>
+        </a>
+        <a>
+            <i href="https://x.com/SerStars_lol">raven</i>
+            <div>Twitter</div>
+        </a>
+    </nav>
+    <main class="responsive">
 
-                    <p>Socials:</p>
-                    <button onclick="window.open('https://github.com/serstars', '_blank')"
-                        style="text-decoration: none; cursor: pointer;">GitHub</button>
-                    <button onclick="window.open('https://discord.com/users/861631850681729045', '_blank')"
-                        style="text-decoration: none; cursor: pointer;">Discord</button>
-                    <button onclick="window.open('https://twitter.com/SerStars_lol', '_blank')"
-                        style="text-decoration: none; cursor: pointer;">Twitter / X</button>
+        <article class="middle-align center-align absolute center middle">
+            <div class="padding">
+                <div>
+                    <div class="tabs">
+                        <a class="active">
+                            <i>person</i>
+                            <span>Activity</span>
+                        </a>
+                        <a>
+                            <i>construction</i>
+                            <span>Projects</span>
+                        </a>
+                    </div>
+                    <div class="page padding active">
+                        <span id="discord"><svg xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xhtml="http://www.w3.org/1999/xhtml" width="410px" height="210px">
+                                <defs>
+                                    <style>
+                                        .hover-opacity:hover {
+                                            opacity: 0.25;
+                                        }
+
+                                        .transition {
+                                            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+                                            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                                            transition-duration: 200ms;
+                                        }
+                                    </style>
+                                </defs>
+                                <foreignObject x="0" y="0" width="410" height="210">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="
+                                                position: absolute;
+                                                width: 400px;
+                                                height: 200px;
+                                                inset: 0;
+                                                background-color: transparent;
+                                                color: #fff;
+                                                font-family: 'Century Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                                                font-size: 16px;
+                                                display: flex;
+                                                flex-direction: column;
+                                                padding: 5px;
+                                                border-radius: 10px;
+                                            ">
+
+
+                                        <div style="
+                                                    width: 400px;
+                                                    height: 100px;
+                                                    inset: 0;
+                                                    display: flex;
+                                                    flex-direction: row;
+                                                    padding-bottom: 5px;
+                                                    border-bottom: solid 0.5px hsl(0, 0%, 100%, 10%)
+                                                ">
+                                            <div style="
+                                                        display: flex;
+                                                        position: relative;
+                                                        flex-direction: row;
+                                                        height: 80px;
+                                                        width: 80px;
+                                                    ">
+                                                <img src="https://serstars.is-a.dev/image.png" style="
+                                                            border-radius: 50%;
+                                                            width: 50px;
+                                                            height: 50px;
+                                                            position: relative;
+                                                            top: 50%;
+                                                            left: 50%;
+                                                            transform: translate(-50%, -50%);
+                                                        ">
+
+                                                <img src="https://serstars.is-a.dev/image.png"
+                                                    class="hover-opacity transition" style="
+                                                            display: block;
+                                                            width: 64px;
+                                                            height: 64px;
+                                                            position: absolute;
+                                                            top: 50%;
+                                                            left: 50%;
+                                                            transform: translate(-50%, -50%);
+                                                        ">
+
+                                                <span style="
+                                                            position: absolute;
+                                                            bottom: 14px;
+                                                            right: 14px;
+                                                            height: 13px;
+                                                            width: 13px;
+                                                            background-color: #747F8D;
+                                                            border-radius: 50%;
+                                                            border: 3px solid transparent;
+">
+                                                </span>
+                                            </div>
+                                            <div style="
+                                                        height: 80px;
+                                                        width: 260px;
+                                                        display: flex;
+                                                        flex-direction: column;
+                                                        justify-content: center;
+                                                    ">
+                                                <div style="
+                                                            display: flex;
+                                                            flex-direction: row;
+                                                            height: 25px;
+                                                        ">
+                                                    <h1 style="
+                                                                font-size: 1.15rem;
+                                                                margin: 0 12px 0 0;
+                                                                white-space: nowrap;
+                                                            ">
+                                                        serstars
+                                                    </h1>
+
+
+
+
+                                                    <img src="https://serstars.is-a.dev/image.png" style="
+                                                                    width: auto;
+                                                                    height: 20px;
+                                                                    position: relative;
+                                                                    top: 50%;
+                                                                    transform: translate(0%, -50%);
+                                                                    margin-right: 7px;
+                                                                ">
+                                                    <img src="https://serstars.is-a.dev/image.png" style="
+                                                                    width: auto;
+                                                                    height: 20px;
+                                                                    position: relative;
+                                                                    top: 50%;
+                                                                    transform: translate(0%, -50%);
+                                                                    margin-right: 7px;
+                                                                ">
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div style="
+                                            display: flex;
+                                            flex-direction: row;
+                                            height: 150px;
+                                            justify-content: center;
+                                            align-items: center;
+                                        ">
+                                            <p style="
+                                                font-style: italic;
+                                                font-size: 0.8rem;
+                                                color: #aaa;
+                                                height: auto;
+                                                text-align: center;
+                                            ">
+                                                <span id="time">00:00:00 PM</span>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </foreignObject>
+                            </svg></span>
+                    </div>
+                    <div class="page padding">
+                        <h5>Tab 2</h5>
+                    </div>
                 </div>
-            </div>
-            <!--<nav class="navbar">
-                <ul class="nav-links">
-                    <li class="nav-link"><a href="/">Home</a></li>
-                    <li class="nav-link"><a href="#">Youtube</a></li>
-                    <li class="nav-link"><a href="#">About</a></li>
-                </ul>
-            </nav>-->
-        </div>
-    </div>
+                <footer>
+                    <p>Some guy with a passion gaming and coding.</p>
+                </footer>
+        </article>
 
-    <script src="index.js"></script>
+    </main>
+
+    <script src="index.js" type="module"></script>
 </body>
 
 </html>
