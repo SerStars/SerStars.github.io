@@ -1,7 +1,7 @@
 (() => {
 
     const time = document.getElementById("tijd")
-    
+
     const timeFunc = () => {
         const currentTime = new Date().toLocaleString("en-US", { timeZone: "Europe/Amsterdam" }).split(", ")[1].split(":");
         const hours = parseInt(currentTime[0]);
@@ -14,11 +14,11 @@
         setInterval(timeFunc, 1000);
     }, 500);
 })()
+const time = document.getElementById("tijd")
 
-var myImageElement = document.getElementById('discordstatus');
-myImageElement.src = 'https://lanyard.cnrad.dev/api/861631850681729045?theme=dark&bg=transparant&idleMessage=Doing+Nothing' + Math.random();
+setInterval(() => {
+    const currentTime = new Date().toLocaleString("en-US", { timeZone: "Europe/Amsterdam" }).split(", ")[1].split(":");
+    const hours = parseInt(currentTime[0]);
 
-setInterval(function() {
-    var myImageElement = document.getElementById('discordstatus');
-    myImageElement.src = 'https://lanyard.cnrad.dev/api/861631850681729045?theme=dark&bg=transparant&idleMessage=Doing+Nothing' + Math.random();
-}, 500);
+    time.innerHTML = `${hours}:${currentTime[1]}:${currentTime[2]}`;
+})
