@@ -1,6 +1,24 @@
-import "https://cdn.jsdelivr.net/npm/beercss@3.7.10/dist/cdn/beer.min.js";
-
 const discord = document.getElementById("discord");
+
+const tab1 = document.getElementById("tab1");
+const tab2 = document.getElementById("tab2");
+
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+
+globalThis.tab = (id) => {
+	if (id === 1) {
+		tab1.classList.add("active")
+		page1.classList.add("active")
+		tab2.classList.remove("active")
+		page2.classList.remove("active")
+	} else if (id === 2) {
+		tab2.classList.add("active")
+		page2.classList.add("active")
+		tab1.classList.remove("active")
+		page1.classList.remove("active")
+	}
+}
 
 const updateDiscord = async () => {
 	const res = await fetch(
@@ -51,7 +69,5 @@ setInterval(() => {
 
 	const time = document.getElementById("time");
 
-	if (time) {
-		time.innerHTML = `${hours}:${currentTime[1]}:${currentTime[2]}`;
-	}
+	if (time) { time.innerHTML = `${hours}:${currentTime[1]}:${currentTime[2]}`; }
 });

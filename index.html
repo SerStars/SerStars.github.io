@@ -6,6 +6,7 @@
     <title>SerStars</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/beercss@3.7.10/dist/cdn/beer.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="https://serstars.is-a.dev/image.png">
 
@@ -33,20 +34,20 @@
     </nav>
     <main class="responsive">
 
-        <article class="middle-align center-align absolute center middle">
+        <article class="middle-align center-align absolute center middle" style="min-height: 453px;">
             <div class="padding">
                 <div>
                     <div class="tabs">
-                        <a class="active">
+                        <a id="tab1" class="active" onclick="tab(1)">
                             <i>person</i>
                             <span>Activity</span>
                         </a>
-                        <a>
+                        <a id="tab2" onclick="tab(2)">
                             <i>construction</i>
                             <span>Projects</span>
                         </a>
                     </div>
-                    <div class="page padding active">
+                    <div class="page padding active" id="page1">
                         <span id="discord"><svg xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xhtml="http://www.w3.org/1999/xhtml" width="410px" height="210px">
                                 <defs>
@@ -198,11 +199,49 @@
                                 </foreignObject>
                             </svg></span>
                     </div>
-                    <div class="page padding">
-                        <h5>Tab 2</h5>
+                    <div class="page padding" id="page2">
+                        <div class="grid">
+                            <div class="s6">
+                                <article>
+                                    <h6>Rosiecord</h6>
+                                    <nav class="middle-align">
+                                        <a class="link" href="https://github.com/serstars/rosiecord"><i>link</i></a>
+                                    </nav>
+                                </article>
+                            </div>
+                            <div class="s6">
+                                <article>
+                                    <h6>Brawl Assets</h6>
+                                    <nav class="middle-align">
+                                        <a class="link"
+                                            href="https://discord.com/invite/brawl-assets-712207286050750474"><i>link</i></a>
+                                    </nav>
+                                </article>
+                            </div>
+                        </div>
+
+                        <div class="grid">
+                            <div class="s6">
+                                <article>
+                                    <h6>Wumpus Central</h6>
+                                    <nav class="middle-align">
+                                        <a class="link" href="https://github.com/Wumpus-Central"><i>link</i></a>
+                                    </nav>
+                                </article>
+                            </div>
+                            <div class="s6">
+                                <article>
+                                    <h6>Enmity Addons</h6>
+                                    <nav class="middle-align">
+                                        <a class="link" href="https://enmity-addons.github.io/"><i>link</i></a>
+                                    </nav>
+                                </article>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-                <footer>
+                <footer style="min-width: 442px;">
                     <p>Some guy with a passion gaming and coding.</p>
                 </footer>
         </article>
