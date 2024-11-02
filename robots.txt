@@ -4,14 +4,4 @@ Disallow: *
 User-agent: Discordbot
 Allow: /
 
-User-agent: Googlebot
-Disallow: /index.js
-Disallow: /style.css
-Disallow: /index.html
-Disallow: /assets/
-
-# copied from Discord:
-User-agent: nsa
-Disallow: /
-
 # You aren't a robot, what are you doing here...
