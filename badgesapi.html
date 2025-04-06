@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheRealBadgesAPI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .left-panel {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .right-panel {
+            flex: 2;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-y: auto;
+            max-height: 80vh;
+            transition: flex 0.3s ease;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .badge img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .badge span {
+            font-size: 16px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .allowed-mods {
+            margin-bottom: 10px;
+        }
+
+        .allowed-mods label {
+            display: block;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 5px;
+            border-radius: 5px;
+            overflow-x: auto;
+            flex: 1;
+            color: #000;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #ffffff;
+            }
+
+            .right-panel {
+                background-color: #1e1e1e;
+            }
+
+            .error {
+                color: #ff0000;
+            }
+
+            code {
+                background-color: #f4f4f4;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1>TheRealBadgesAPI</h1>
+            <p>Enter a Discord User ID to fetch badges:</p>
+            <input type="text" id="userid" placeholder="Enter User ID" />
+            <div class="allowed-mods">
+                <p>Filter Mods:</p>
+                <label><input type="checkbox" class="allowedmod" value="vencord" /> Vencord</label>
+                <label><input type="checkbox" class="allowedmod" value="equicord" /> Equicord</label>
+                <label><input type="checkbox" class="allowedmod" value="nekocord" /> Nekocord</label>
+                <label><input type="checkbox" class="allowedmod" value="reviewdb" /> ReviewDB</label>
+                <label><input type="checkbox" class="allowedmod" value="clientmods" /> Other ClientMods</label>
+            </div>
+            <br>
+            <label>
+                <input type="checkbox" id="prefix" />
+                Include Prefix
+            </label>
+            <br>
+            <p>Final API URL:</p>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <code id="apiUrl"
+                    style="background-color: #f4f4f4; padding: 5px; border-radius: 5px; overflow-x: auto; flex: 1;">API URL will appear here...</code>
+                <button id="copyApiUrl" style="padding: 5px 10px;">Copy</button>
+            </div>
+            <br>
+            <button id="fetchBadges">Fetch Badges</button>
+        </div>
+        <div class="right-panel" id="results">
+            Badges will be displayed here.
+        </div>
+    </div>
+
+    <script>
+        const fetchBadges = async () => {
+            const userid = document.getElementById('userid').value.trim();
+            const prefix = document.getElementById('prefix').checked;
+            const allowedmods = Array.from(document.querySelectorAll('.allowedmod:checked'))
+                .map(mod => mod.value)
+                .join(',');
+
+            if (!userid) {
+                alert('User ID is required!');
+                return;
+            }
+
+            const url = new URL('https://therealbadgesapi.serstars.workers.dev/');
+            url.searchParams.append('userid', userid);
+            if (prefix) url.searchParams.append('prefix', 'true');
+            if (allowedmods) url.searchParams.append('allowedmods', allowedmods);
+
+            const apiUrlField = document.getElementById('apiUrl');
+            apiUrlField.textContent = url.toString();
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = 'Loading...';
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Error: ${response.status}`);
+                const badges = await response.json();
+
+                resultsDiv.innerHTML = '';
+                if (badges.length === 0) {
+                    resultsDiv.innerHTML = 'No badges found.';
+                    adjustRightPanel(0);
+                    return;
+                }
+
+                badges.forEach(badge => {
+                    const badgeDiv = document.createElement('div');
+                    badgeDiv.className = 'badge';
+                    badgeDiv.title = `Source: ${badge.source}`
+                    badgeDiv.innerHTML = `
+                        <img src="${badge.icon}" alt="${badge.name}" />
+                        <span>${badge.tooltip}</span>
+                    `;
+                    resultsDiv.appendChild(badgeDiv);
+                });
+                adjustRightPanel(badges.length);
+            } catch (error) {
+                resultsDiv.innerHTML = `<p class="error">${error.message}</p>`;
+                adjustRightPanel(0);
+            }
+        };
+
+        const adjustRightPanel = (badgeCount) => {
+            const rightPanel = document.querySelector('.right-panel');
+            if (badgeCount > 10) {
+                rightPanel.style.flex = '3';
+            } else if (badgeCount > 0) {
+                rightPanel.style.flex = '2';
+            } else {
+                rightPanel.style.flex = '1';
+            }
+        };
+
+        document.getElementById('fetchBadges').addEventListener('click', fetchBadges);
+        document.getElementById('userid').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                fetchBadges();
+            }
+        });
+
+        document.getElementById('copyApiUrl').addEventListener('click', () => {
+            const apiUrlField = document.getElementById('apiUrl');
+            const apiUrl = apiUrlField.textContent;
+            if (apiUrl === 'API URL will appear here...' || !apiUrl.startsWith('https://')) {
+                alert('Fetch badges first to generate a valid API URL.');
+                return;
+            }
+
+            navigator.clipboard.writeText(apiUrl).then(() => {
+                alert('API URL copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy API URL.');
+                console.error(err);
+            });
+        });
+
+        function checkMobile() {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                const viewport = document.querySelector('meta[name="viewport"]');
+                if (viewport) {
+                    viewport.content = 'width=device-width, initial-scale=0.70, maximum-scale=1';
+                } else {
+                    const meta = document.createElement('meta');
+                    meta.name = 'viewport';
+                    meta.content = 'width=device-width, initial-scale=0.70, maximum-scale=1';
+                    document.head.appendChild(meta);
+                }
+            }
+        }
+        window.addEventListener('load', checkMobile);
+    </script>
+</body>
+</html>
