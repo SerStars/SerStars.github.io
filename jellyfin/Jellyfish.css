@@ -1,0 +1,11 @@
+/* Light Mode */
+.pageTitleWithDefaultLogo {
+    background-image: url(https://raw.githubusercontent.com/SerStars/SerStars.github.io/main/jellyfin/JellyfishBannerDark.png);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .pageTitleWithDefaultLogo {
+        background-image: url(https://raw.githubusercontent.com/SerStars/SerStars.github.io/main/jellyfin/JellyfishBannerLight.png);
+    }
+}
