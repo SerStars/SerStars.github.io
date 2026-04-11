@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connect Discord</title>
+</head>
+<body style="font-family: sans-serif; text-align: center; margin-top: 50px; background-color: black; color: white">
+    <h2>Copy this code:</h2>
+    <code id="code" style="font-size: 20px; color: white; background-color: #333; padding: 10px;"></code>
+    <h4>And paste it in the Discord bot<br>With the <code style="color: white; background-color: #333;">/link_widget</code> command!</code></h4>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+        document.getElementById("code").innerText = code || "No code found";
+    </script>
+</body>
+</html>
